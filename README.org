@@ -1,0 +1,22 @@
+* Hardware Implementation of Stream-Based Center-of-Gravity Algorithm
+** How to use this repository
+   The version control system is realized by using the [[https://github.com/Digilent/digilent-vivado-scripts][Digilent Vivado Scripts]] and the detailed instructions for different workflows can be found on its [[https://github.com/Digilent/digilent-vivado-scripts][github page]].
+
+For a quick start, clone this repo:
+
+#+BEGIN_SRC shell
+git clone --recursive https://fanpeng-kong@bitbucket.org/ajlao/scog.git
+#+END_SRC
+
+In =digilent-vivado-scripts/config.ini=, modify the =VivadoInstallPath=, =SdkInstallPath=, =VivadoVersion= and =XsctFile= according to your system's Vivado Design Suite installation.
+
+Then open Vivado and change directory to =your-local-repo-path/digilent-vivado-scripts/= and execute the following TCL command in the TCL shell:
+
+#+BEGIN_SRC tcl
+source digilent_vivado_checkin.tcl
+#+END_SRC 
+* Verification of SCoG
+  To verify the effectiveness of the SCoG module, an artificial MLA image is generated including various scenarios: occurrence of centroids of sup-apertures in the same row descend/ascend in terms of row numbers, multiple centroids in one sub-aperture. Cenroids sit on whole or half pixels as can be seen in the following image
+  [[./doc/scog-test-image.png]]
+  The simulation result of the SCoG module can be seen in the following figure. All the 12 centroids are detected correctly:
+  [[./doc/scog-test-result.png]]
